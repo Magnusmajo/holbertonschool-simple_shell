@@ -1,2 +1,3 @@
 # holbertonschool-simple_shell
-My shell project
+SIMPLE SHELL 
+
