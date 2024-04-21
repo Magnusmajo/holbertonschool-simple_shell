@@ -7,6 +7,5 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-
+void read_input(char *input);
 #endif
