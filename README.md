@@ -3,7 +3,7 @@ Simple Shell
 
 * Shellinator is a simple command interpreter written in C. It allows users to execute operating system commands in a similar way as they would in a terminal.
 
- * Features: 
+ * Features:
 - Execution of operating system commands
 - Support for built-in commands
 - Robust error handling
