@@ -21,7 +21,7 @@ int main(void)
 
 	if (strcmp(command, "exit") == 0)
 	{
-		printf("See you later, baby!...\n");
+		printf("I'll be back!...\n");
 		break;
 	}
 
