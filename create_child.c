@@ -11,7 +11,10 @@ pid_t child = fork();
 
 	if (child == 0) /*Proceso hijo*/
 	{
-		char *args[] = {command, NULL}; /*Lista de argumentos para el comando*/
+		char *args[2]; /*Lista de argumentos para el comando*/
+
+		args[0] = command;
+		args[1] = NULL;
 
 		execv(command, args); /*Ejecuta el nuevo programa*/
 
