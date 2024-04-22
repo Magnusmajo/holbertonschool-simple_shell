@@ -7,5 +7,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-void read_input(char *input);
+
+void create_child(char command[]);
 #endif
