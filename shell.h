@@ -8,5 +8,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void create_child(char command[]);
+char *read_line(void);
+void handle_sigint(int sign);
+int execute_command(char **args);
+void setup_signals(void);
+void main_loop(void);
+
 #endif

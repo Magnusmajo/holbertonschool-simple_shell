@@ -1,32 +1,20 @@
 #include "shell.h"
 /**
- * main - Entry point
- * Return: Always 0.
+ * main - Creating the Principal bucle
+ * Return: Always 0
  */
-int main(void)
+int main_loop(void)
 {
-	char command[100];
+	char *line;
+	char **args;
+	int arnold;
 
-	while (1)
-	{
-		printf("shellinator$ ");
-		fflush(stdout);
-
-	if (read(STDIN_FILENO, command, sizeof(command)) == -1)
-	{
-		perror("Error reading input");
-		exit(EXIT_FAILURE);
-	}
-		command[strcspn(command, "\n")] = '\0';
-
-	if (strcmp(command, "exit") == 0)
-	{
-		printf("I'll be back!...\n");
-		break;
-	}
-
-	create_child(command);
-	}
-
-	return (0);
+	do {
+		printf("<Shellinator$> ");
+		line = read_line();
+		args = split_line(line);
+		arnold = execute_command(args);
+		free(line);
+		free(args);
+	} while (arnold);
 }
