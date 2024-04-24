@@ -2,6 +2,8 @@
 
 /**
  * create_child - Crea un nuevo proceso
+ *
+ * @command: A entry command
  * Return: El ID del hijo creado
  */
 void create_child(char command[])
