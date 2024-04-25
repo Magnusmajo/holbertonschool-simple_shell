@@ -9,7 +9,7 @@
 void handle_sigint(int sign)
 
 {
-	printf("\n You have pressed Ctrl+C.\n");
+	printf("\n You have entered Ctrl+C.\n");
 	(void)sign;
 }
 /**

@@ -18,19 +18,20 @@ int execute_command(char **args)
 	{
 		if (args[1] == NULL)
 		{
-			fprintf(stderr, "Ups: Not an arguments for \"cd\"n");
+			fprintf(stderr, "Ups: Not an arguments for \"cd\n");
 		}
 		else
 		{
 			if (chdir(args[1]) != 0)
 			{
-			perror("Ups");
+			perror("Ups, an error ocurred\n");
 			}
 		}
 		return (1);
 	}
 	if (strcmp(args[0], "exit") == 0)
 	{
+		printf("I'll back!\n");
 		return (0);
 	}
 
@@ -49,10 +50,8 @@ int execute_command(char **args)
 		}
 	else
 		{
-			do {
-					pid = waitpid(pid, &stat, WUNTRACED);
-				}
-		while (!WIFEXITED(stat) && !WIFSIGNALED(stat));
+			waitpid(pid, &stat, WUNTRACED);
+
 		}
 	return (1);
 }
