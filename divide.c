@@ -44,4 +44,5 @@ char **split_line(char *line)
 }
 	tokens[posit] = NULL;
 	return (tokens);
+	free(line);
 }
