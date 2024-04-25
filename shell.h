@@ -9,9 +9,8 @@
 #include <unistd.h>
 
 char *read_line(void);
-void handle_sigint(int sign);
+char **split_line(char *line);
 int execute_command(char **args);
 void setup_signals(void);
-void main_loop(void);
-
+void loop(void);
 #endif

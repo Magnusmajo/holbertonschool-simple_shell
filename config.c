@@ -6,8 +6,10 @@
  * @argv: Entry pointer
  * Return: SUCCESS
  */
-int main(int argc, char **argv)
+void loop(void);
+
+int main(void)
 {
-	main_loop();
+	loop();
 	return (EXIT_SUCCESS);
 }

@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- * main - Creating the Principal bucle
+ * loop  - Creating the Principal bucle
  * Return: Always 0
  */
-int main_loop(void)
+void loop(void)
 {
 	char *line;
 	char **args;

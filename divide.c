@@ -39,8 +39,9 @@ char **split_line(char *line)
 		}
 
 	}
+
 	token = strtok(NULL, TOKEN_DELIMIT);
 }
-tokens[posit] = NULL;
-return (tokens);
+	tokens[posit] = NULL;
+	return (tokens);
 }

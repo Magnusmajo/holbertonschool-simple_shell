@@ -7,8 +7,10 @@
  */
 
 void handle_sigint(int sign)
+
 {
 	printf("\n You have pressed Ctrl+C.\n");
+	(void)sign;
 }
 /**
  * setup_signals - Handle the sign entered
