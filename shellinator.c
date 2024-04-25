@@ -11,7 +11,9 @@ void loop(void)
 
 	do {
 		printf("<Shellinator$> ");
+                fflush(stdout);
 		line = read_line();
+		 line[strcspn(line, "\n")] = '\0';
 		args = split_line(line);
 		arnold = execute_command(args);
 		free(line);
