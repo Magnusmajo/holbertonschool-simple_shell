@@ -8,6 +8,7 @@ void loop(void)
 	char *line;
 	char **args;
 	int arnold;
+	int len;
 
 	do {
 		printf("<Shellinator$> ");
@@ -15,8 +16,7 @@ void loop(void)
 		line = read_line();
 		/*line[strcspn(line, "\n")] = '\0';*/
 
-		int len = strlen(line);
-
+		len = strlen(line);
 		while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == ' ' || line[len - 1] == '\t')) {
 			line[len - 1] = '\0';
 			len--;
