@@ -14,7 +14,8 @@ void loop(void)
 		line = read_line();
 		args = split_line(line);
 		arnold = execute_command(args);
-		free(line);
-		free(args);
 	} while (arnold);
+
+	free(line);
+	free(args);
 }
