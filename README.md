@@ -10,41 +10,62 @@
     - Support for built-in commands
     - Robust error handling
 
-* To run our simple shell you must write the `./hsh` command
-
-* Usage
-    - To use Shellinator, simply type the command you want to execute in the command line and press Enter. 
-    - If you want to exit Shellinator, simply type the `exit` command and press Enter or you can press `Ctrl+d`
 
 * Built-in commands
 
   - Shellinator also includes some built-in commands that you can use. These commands are not executed through the operating system, but are handled directly by Shellinator. 
-  - The available built-in commands are:
+  - The available examples built-in commands are:
 
-     `exit`: Exit Shellinator.
 
-### 2) **How does it works:** 🛠️
+  Exit Shellinator
 
-- ### `shell.h`
-        Contain the functions and structures for our program
+        exit
+        
+  Print working directory
 
-- ### `sifn.c`  
-        Handle the signs entered
+        pwd
 
-- ### `config.c`
-        Charge the configuration files for the principal bucle
+  Displays the files and directories in the current directory
 
-- ###  `divide.c`  
-        Divide the line into tokens
+        ls
+        
+### 2) **Shellinator instructions** 📝
+##### To use Shellinator
+* Copy [this repository](https://github.com/Magnusmajo/holbertonschool-simple_shell.git).
+* Compile the program with:
+  
+        gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
-- ###  `execute_command.c`
-        Execute the especified command
+* Run the `hsh` file.
+* Simply type the command you want to execute in the command line and press `Enter`.
+* If you want to exit Shellinator, simply type the `exit` command and press `Enter` or you can press `Ctrl + d`.
 
-- ###  `hellinator.c`
-        Manage the program
+### 3) **How does it works:** 🛠️
+
+### `shell.h`
+-    Contain the functions and structures for our program
+
+### `sifn.c`  
+-    Handle the signs entered
+
+### `config.c`
+-    Charge the configuration files for the principal bucle
+
+###  `divide.c`  
+-    Divide the line into tokens
+
+###  `execute_command.c`
+-    Execute the especified command
+
+###  `shellinator.c`
+-    Manage the program
+
 
 **License**
 Shellinator is available under the [Holberton School](https://www.holbertonschool.com) license. See the LICENSE file for more details.
+
+**Authors**
+This project was created by **Alexis Rodriguez**, **Bryan Aleman** and **Micke Lucas**.
 
 **Contact**
 If you have any questions or suggestions, don't hesitate to contact us via my email: alexisoblivion@gmail.com.
