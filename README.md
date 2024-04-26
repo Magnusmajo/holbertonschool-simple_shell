@@ -39,7 +39,8 @@ Divide the line into tokens
 ##  execute_command.c
 Execute the especified command
 
-##  Manage the program
+##  hellinator.c
+Manage the program
 
 * License
 Shellinator is available under the Holberton School license. See the LICENSE file for more details.
