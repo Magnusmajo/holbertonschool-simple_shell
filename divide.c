@@ -12,30 +12,23 @@
 char **split_line(char *line)
 {
 	int bufsize = TOKEN_BUFSIZE;
-	int posit = 0;
+	int posit;
 	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
+	char *token = strtok(line, TOKEN_DELIMIT);
 
 	if (!tokens)
 	{
-		fprintf(stderr, "Error de asignación\n");
+		perror("malloc_error");
 		exit(EXIT_FAILURE);
+		free(tokens);
 	}
 
-	token = strtok(line, TOKEN_DELIMIT);
-		while (token != NULL)
+	for (posit = 0; !token && posit < bufsize - 1; posit++)
 	{
-	tokens[posit] = token;
-	posit++;
-
-	if (posit >= bufsize)
-	{
-		fprintf(stderr, "Demasiados tokens. Aumenta TOKEN_BUFSIZE.\n");
-		exit(EXIT_FAILURE);
+		tokens[posit] = token;
+		token = strtok(NULL, TOKEN_DELIMIT);
 	}
 
-	token = strtok(NULL, TOKEN_DELIMIT);
-	}
 	tokens[posit] = NULL;
-	return tokens;
+	return (tokens);
 }
