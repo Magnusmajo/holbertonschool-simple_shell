@@ -12,7 +12,6 @@ char *read_line(void)
 
 	if (getline(&line, &bufsize, stdin) == -1)
 	{
-		perror("I'll be back: user");
 		exit(EXIT_FAILURE);
 	}
 	return (line);

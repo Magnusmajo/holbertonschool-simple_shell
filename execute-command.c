@@ -31,7 +31,6 @@ int execute_command(char **args)
 	}
 	if (strcmp(args[0], "exit") == 0)
 	{
-		printf("I'll back!\n");
 		return (0);
 	}
 
