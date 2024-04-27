@@ -38,6 +38,10 @@ char **split_line(char *line)
 			fprintf(stderr, "lsh: error de asignación\n");
 			exit(EXIT_FAILURE);
 		}
+	for (posit = 0; posit < bufsize - 1; posit++)
+	{
+		tokens[posit] = token;
+		token = strtok(NULL, TOKEN_DELIMIT);
 	}
 
 	token = strtok(NULL, TOKEN_DELIMIT);

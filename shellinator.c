@@ -19,6 +19,8 @@ int main(void)
 			;
 		}
 
+		printf("<Shellinator$> ");
+		fflush(stdout);
 		line = read_line();
 		execute_command(line);
 		free(line);
