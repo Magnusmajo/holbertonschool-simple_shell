@@ -8,9 +8,10 @@ void loop(void)
 	char *line;
 	char **args;
 	int arnold;
+
 	do {
 		printf("<Shellinator$> ");
-                fflush(stdout);
+		fflush(stdout);
 		line = read_line();
 		args = split_line(line);
 		arnold = execute_command(args);

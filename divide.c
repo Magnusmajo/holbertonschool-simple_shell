@@ -23,7 +23,7 @@ char **split_line(char *line)
 		free(tokens);
 	}
 
-	for (posit = 0; !token && posit < bufsize - 1; posit++)
+	for (posit = 0; posit < bufsize - 1; posit++)
 	{
 		tokens[posit] = token;
 		token = strtok(NULL, TOKEN_DELIMIT);

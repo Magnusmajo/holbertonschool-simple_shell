@@ -18,7 +18,7 @@ int execute_command(char **args)
 	{
 		if (args[1] == NULL)
 		{
-			fprintf(stderr, "Ups: Not an arguments for \"cd\n");
+			fprintf(stderr, "Ups: Not an arguments for \"cd\"\n");
 		}
 		else
 		{
