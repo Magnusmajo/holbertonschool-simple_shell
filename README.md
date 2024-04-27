@@ -48,7 +48,7 @@
 <<<<<<< HEAD
 ### `sifn.c`
 =======
-### `sign.c`  
+### `sign.c`
 >>>>>>> origin/main
 -    Handle the signs entered
 
