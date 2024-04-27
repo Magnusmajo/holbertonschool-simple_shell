@@ -45,7 +45,11 @@
 ### `shell.h`
 -    Contain the functions and structures for our program
 
+<<<<<<< HEAD
 ### `sifn.c`
+=======
+### `sign.c`  
+>>>>>>> origin/main
 -    Handle the signs entered
 
 ### `config.c`
@@ -54,7 +58,7 @@
 ###  `divide.c`
 -    Divide the line into tokens
 
-###  `execute_command.c`
+###  `execute-command.c`
 -    Execute the especified command
 
 ###  `shellinator.c`
