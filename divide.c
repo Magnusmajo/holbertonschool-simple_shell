@@ -12,23 +12,36 @@
 char **split_line(char *line)
 {
 	int bufsize = TOKEN_BUFSIZE;
-	int posit;
+	int position = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token = strtok(line, TOKEN_DELIMIT);
+	char *token;
 
 	if (!tokens)
 	{
-		perror("malloc_error");
+		fprintf(stderr,"\n");
 		exit(EXIT_FAILURE);
-		free(tokens);
 	}
 
-	for (posit = 0; !token && posit < bufsize - 1; posit++)
-	{
-		tokens[posit] = token;
-		token = strtok(NULL, TOKEN_DELIMIT);
+	token = strtok(line, TOKEN_DELIMIT);
+
+	while (token != NULL)
+       	{
+	tokens[position] = token;
+	position++;
+
+	if (position >= bufsize)
+       {
+		bufsize += TOKEN_BUFSIZE;
+		tokens = realloc(tokens, bufsize * sizeof(char *));
+		if (!tokens)
+		{
+			fprintf(stderr, "lsh: error de asignación\n");
+			exit(EXIT_FAILURE);
+		}
 	}
 
-	tokens[posit] = NULL;
-	return (tokens);
+	token = strtok(NULL, TOKEN_DELIMIT);
+	}
+	tokens[position] = NULL;
+	return tokens;
 }

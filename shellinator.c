@@ -3,18 +3,26 @@
  * loop  - Creating the Principal bucle
  * Return: Always 0
  */
-void loop(void)
+int main(void)
 {
 	char *line;
-	char **args;
-	int arnold;
-	do {
-		printf("<Shellinator$> ");
-                fflush(stdout);
+	
+	while (1)
+	{
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			printf("<Shellinator$> ");
+			fflush(stdout);
+		}
+		else
+		{
+			;
+		}
+
 		line = read_line();
-		args = split_line(line);
-		arnold = execute_command(args);
+		execute_command(line);
 		free(line);
-		free(args);
-	} while (arnold);
+	}
+	free(line);
+	return (EXIT_SUCCESS);
 }

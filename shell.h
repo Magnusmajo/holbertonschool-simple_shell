@@ -8,10 +8,15 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+extern char **environ;
+char **execute_command(char *args);
+void do_it(char *args);
 char *read_line(void);
+void take_it(char *args[]);
+void create_child(char *args, char *arguments[]);
+int main(void);
+char *get_env(const char *env);
 char **split_line(char *line);
-int execute_command(char **args);
-void setup_signals(void);
-void loop(void);
+void print_env(void);
 
 #endif

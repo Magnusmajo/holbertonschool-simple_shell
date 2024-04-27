@@ -12,7 +12,17 @@ char *read_line(void)
 
 	if (getline(&line, &bufsize, stdin) == -1)
 	{
+		free(line);
 		exit(EXIT_FAILURE);
+	}
+	if (strcmp(line, "exit") == 0)
+	{
+		free(line);
+	}
+	if (strcmp(line, "env") == 0)
+	{
+		print_env();
 	}
 	return (line);
 }
+	
