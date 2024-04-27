@@ -13,14 +13,14 @@
 
 * Built-in commands
 
-  - Shellinator also includes some built-in commands that you can use. These commands are not executed through the operating system, but are handled directly by Shellinator. 
+  - Shellinator also includes some built-in commands that you can use. These commands are not executed through the operating system, but are handled directly by Shellinator.
   - The available examples built-in commands are:
 
 
   Exit Shellinator
 
         exit
-        
+
   Print working directory
 
         pwd
@@ -28,12 +28,12 @@
   Displays the files and directories in the current directory
 
         ls
-        
+
 ### 2) **Shellinator instructions** 📝
 ##### To use Shellinator
 * Copy [this repository](https://github.com/Magnusmajo/holbertonschool-simple_shell.git).
 * Compile the program with:
-  
+
         gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 * Run the `hsh` file.
@@ -45,13 +45,13 @@
 ### `shell.h`
 -    Contain the functions and structures for our program
 
-### `sifn.c`  
+### `sifn.c`
 -    Handle the signs entered
 
 ### `config.c`
 -    Charge the configuration files for the principal bucle
 
-###  `divide.c`  
+###  `divide.c`
 -    Divide the line into tokens
 
 ###  `execute_command.c`
