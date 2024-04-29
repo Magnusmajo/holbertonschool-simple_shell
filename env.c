@@ -1,23 +1,38 @@
 #include "shell.h"
 /**
- * _getenv - Gets the desired environment
+ * get_env - Get the environment
  *
- * @envy: name in mayus of the environment you want
+ * @env: Entry pointer
  *
  * Return: Pointer to environment string, NULL on failure.
  */
 char *get_env(const char *env)
 {
 	int i = 0;
+	char *env_entry_dup;
+	char *env_name;
+	char *env_value;
 
-	while (environ[i++])
-		if (strcmp(environ[i], env) == '=')
-			break;
-		else if (environ[i] == NULL)
-		{
-			fprintf(stderr, "bash: %s: ", env);
-			perror("");
-		}
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		env_entry_dup = strdup(environ[i]);
+		if (!env_entry_dup)
+	{
+		return (NULL);
+	}
 
-	return (environ[i]);
+	env_name = strtok(env_entry_dup, "=");
+	env_value = strdup(strtok(NULL, "="));
+
+	if (env_name != NULL && strcmp(env_name, env) == 0)
+	{
+
+		free(env_entry_dup);
+		return (env_value);
+	}
+
+	free(env_entry_dup);
+	}
+
+	return (NULL);
 }

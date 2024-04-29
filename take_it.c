@@ -2,8 +2,8 @@
 #define MAX_PATH_LENGTH 69
 
 /**
- * search - busca la ruta correcta para un comando
- * @argv: argumentos del programa
+ * take_it - Take the correct route for a command
+ * @args: Entry arguments
  */
 void take_it(char *args[])
 {
@@ -15,7 +15,6 @@ void take_it(char *args[])
 	if (route == NULL)
 	{
 		fprintf(stderr, "Error al obtener la variable PATH.\n");
-		return;
 	}
 
 	if (copy_route == NULL)

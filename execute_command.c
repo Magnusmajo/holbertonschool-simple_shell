@@ -13,6 +13,7 @@ char **execute_command(char *args)
 	char *token = strtok(args, " \n\t");
 	char **argument = malloc(bufsize * sizeof(char *));
 	int posit;
+
 	if (!argument)
 	{
 		perror("Error");

@@ -12,25 +12,25 @@
 char **split_line(char *line)
 {
 	int bufsize = TOKEN_BUFSIZE;
-	int position = 0;
+	int posit = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
 	if (!tokens)
 	{
-		fprintf(stderr,"\n");
+		fprintf(stderr, "\n");
 		exit(EXIT_FAILURE);
 	}
 
 	token = strtok(line, TOKEN_DELIMIT);
 
 	while (token != NULL)
-       	{
-	tokens[position] = token;
-	position++;
+	{
+		tokens[posit] = token;
+		posit++;
 
-	if (position >= bufsize)
-       {
+	if (posit >= bufsize)
+	{
 		bufsize += TOKEN_BUFSIZE;
 		tokens = realloc(tokens, bufsize * sizeof(char *));
 		if (!tokens)
@@ -46,6 +46,8 @@ char **split_line(char *line)
 
 	token = strtok(NULL, TOKEN_DELIMIT);
 	}
-	tokens[position] = NULL;
-	return tokens;
+	tokens[posit] = NULL;
+	return (tokens);
+	}
+	return (0);
 }

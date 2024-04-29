@@ -18,6 +18,7 @@ char *read_line(void)
 	if (strcmp(line, "exit") == 0)
 	{
 		free(line);
+		exit(EXIT_SUCCESS);
 	}
 	if (strcmp(line, "env") == 0)
 	{
@@ -25,4 +26,3 @@ char *read_line(void)
 	}
 	return (line);
 }
-	
