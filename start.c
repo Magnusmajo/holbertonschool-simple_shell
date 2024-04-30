@@ -3,7 +3,7 @@
  * env_builtin - enviroment built-in.
  * @env: the array of string of environment values.
  */
-void built_in(char **env)
+void env_builtin(char **env)
 {
 	int i;
 
@@ -11,13 +11,13 @@ void built_in(char **env)
 	{
 		for (i = 0; env[i]; i++)
 		{
-			write_string(env[i]);
-			write_character('\n');
+			print_string(env[i]);
+			write_char('\n');
 		}
 	}
 }
 /**
- * main - run a shell
+ * main - run simple shelll finally.
  * @ac: argument count.
  * @av: argument var.
  * @env: array of string.
@@ -32,12 +32,12 @@ int main(int ac, __attribute__((unused))char **av, char **env)
 
 	while (1)
 	{
-		buff = read_line();
+		buff = readline();
 		tokenize = NULL;
-		tokenize = custom_tokenize(buff);
+		tokenize = custom_tokenizer(buff);
 		if (!tokenize)
 			continue;
-		tokenizator(tokenize, env, &buff, number);
+		cmd(tokenize, env, &buff, number);
 		pid = fork();
 		if (pid == -1)
 		{
@@ -47,7 +47,7 @@ int main(int ac, __attribute__((unused))char **av, char **env)
 		}
 		if (pid == 0)
 		{
-			path = find_executable_path(tokenize[0], env);
+			path = pathch(tokenize[0], env);
 			if (execve(path, tokenize, NULL) == -1)
 			{
 				perror(tokenize[0]);
@@ -76,8 +76,8 @@ void _free(char **tokenize, char *buff)
 
 	for (i = 0; tokenize[i]; i++)
 		free(tokenize[i]);
-	free_memory(tokenize);
-	free_string(buff);
+	nfree(tokenize);
+	sfree(buff);
 }
 /**
  * __free - free variable for main.
@@ -86,8 +86,8 @@ void _free(char **tokenize, char *buff)
  */
 void __free(char **tokenize, char *buff)
 {
-	free_memory(tokenize);
-	free_string(buff);
+	nfree(tokenize);
+	sfree(buff);
 }
 /**
  * __exit - return exit frommm child process

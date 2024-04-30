@@ -1,32 +1,30 @@
 #include "shell.h"
 
 /**
- * tokenizator - built-in command handler for the shell.
- * @tokens: array of tokenized strings from the startsh file.
- * @environment: array of strings for environment values.
- * @input: input buffer from the main function.
- * @stat: exit status value.
+ * internal_command - Handles built-in shell commands.
+ * @tokens: Array of tokens obtained from the input buffer in the startsh file.
+ * @env_vars: Array of strings containing environment variables.
+ * @input_buffer: Input buffer from the main program.
+ * @exit_status: Exit status value.
  */
-void tokenizator(char **tokens, char **environment, char **input, int stat)
+void cmd(char **tokens, char **vars, char **input, int exit_stat)
 {
-	int i = 0;
+	int posit = 0;
 	(void)input;
 
-	if (_strcmp(tokens[0], "exit") == 0)
+	if (_strcmp(tokens[posit], "exit") == 0)
 	{
-	while (tokens[i])
+		while (tokens[posit])
+			posit++;
+		free(tokens[posit]);
+		free(*input);
+		free(tokens);
+		exit(exit_stat);
+	}
+	else if (_strcmp(tokens[posit], "env") == 0)
 	{
-		free(tokens[i]);
-		i++;
+		if (!tokens[posit + 1])
+		env_builtin(vars);
 	}
-	free(*input);
-	free(tokens);
-	exit(stat);
-	}
-	if (_strcmp(tokens[0], "env") == 0)
-	{
-	if (!tokens[1])
-		built_in(environment);
-	}
+	posit++;
 }
-

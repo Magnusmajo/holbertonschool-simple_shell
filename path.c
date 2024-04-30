@@ -1,91 +1,84 @@
 #include "shell.h"
-
 /**
- * get_path_value - Retrieves the value of the PATH environment variable.
- * @env: An array of strings representing the environment variables.
- * Return: A pointer to the PATH value or NULL if not found.
+ * pathvalue - value of environ.
+ * @env: an array of string to environ
+ * Return: token or NULL.
  */
-char *get_path_value(char **env)
+char *pathvalue(char **env)
 {
-	char *path_token, *env_entry;
-	int i;
+	char *token, *temp;
+	int i = 0;
 
-	for (i = 0; env[i] != NULL; i++)
+	while (env[i])
 	{
-		env_entry = env[i];
-		path_token = strtok(env_entry, "=");
-		if (_strcmp(path_token, "PATH") == 0)
+		temp = env[i];
+		token = strtok(temp, "=");
+		if (_strcmp(token, "PATH") == 0)
 		{
-			path_token = strtok(NULL, "=");
-			return (path_token);
+			token = strtok(NULL, "=");
+			return (token);
 		}
+		i++;
 	}
 	return (NULL);
 }
 /**
- * find_substring - a function that locates a substring.
- * @str: string character value.
- * @substr: substring character value.
- * Return: Returns a pointer to the substring.
+ * _strstr -  a function that locates a substring..
+ * @haystack: string character value.
+ * @needle: substring character value.
+ * Return: Returns a pointer to substring.
  */
-char *find_substring(char *str, char *substr)
+char *_strstr(char *haystack, char *needle)
 {
-	int i, i_sub = 0;
+	int i, j = 0;
 
-	if (substr[i_sub] == '\0')
-		return (str);
-
-	for (i = 0; str[i] != '\0'; i++)
+	if (needle[j] == '\0')
+		return (haystack);
+	for (i = 0; haystack[i] != '\0'; i++)
 	{
-		if (str[i] == substr[0])
+		if (haystack[i] == needle[0])
 		{
-			for (i_sub = 0; substr[i_sub] != '\0' && str[i + i_sub] && substr[i_sub] == str[i + i_sub]; i_sub++)
-				;
-			if (substr[i_sub] == '\0')
-				return (str + i);
+		for (j = 0; needle[j] != '\0' && haystack[i + j]
+		&& needle[j] == haystack[i + j]; j++)
+			;
+		if (needle[j] == 0)
+			return (haystack + i);
 		}
 	}
-	return (NULL);
+	return (0);
 }
 /**
- * find_executable_path - Finds the executable path for
- * a given command in the specified environment.
- *
- * @command: The name of the executable command.
- * @environment: An array of strings representing the environment.
- * @return The full path to the executable or NULL if not found.
+ * pathch - tokenize path and check if the buffer exists.
+ * @token: the string tokenizedddd the buffer in startsh file.
+ * @env: array of string to environ.
+ * Return: the buffer.
  */
-char *find_executable_path(char *command, char **environment)
+char *pathch(char *token, char **env)
 {
 	static char buffer[1024] = {0};
-	char *path, *first_colon, *next_colon, *token;
+	char *path, *a, *b, *tok;
 	struct stat st;
 
-	path = get_path_value(environment);
+	path = pathvalue(env);
 	if (!path)
 		path = "";
-
-	first_colon = find_substring(path, "::");
-	next_colon = find_substring(path, ":/bin");
-
-	if (path[0] == ':' || (first_colon && (first_colon < next_colon)))
+	a = _strstr(path, "::");
+	b = _strstr(path, ":/bin");
+	if (path[0] == ':' || (a && (a < b)))
 	{
-		if (stat(command, &st) == 0)
-			return (command);
+		if (stat(token, &st) == 0)
+		return (token);
 	}
-
-	token = strtok(path, ":");
-	for (; token; token = strtok(NULL, ":"))
+	tok = strtok(path, ":");
+	while (tok)
 	{
-	_strcat(buffer, token);
-	_strcat(buffer, "/");
-	_strcat(buffer, command);
-	if (stat(buffer, &st) == 0)
-		return (buffer);
-
-	_memset(buffer, 0, 1024);
+		_strcat(buffer, tok);
+		_strcat(buffer, "/");
+		_strcat(buffer, token);
+		if (stat(buffer, &st) == 0)
+			return (buffer);
+		tok = strtok(NULL, ":");
+		_memset(buffer, 0, 1024);
 	}
-
-	return (command);
+	return (token);
 }
-
