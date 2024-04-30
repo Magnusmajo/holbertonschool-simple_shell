@@ -17,88 +17,51 @@ void env_builtin(char **env)
 	}
 }
 /**
- * main - run simple shelll finally.
- * @ac: argument count.
- * @av: argument var.
+ * main - Execute the shell.
+  @argc: argumenthellcount.
+ * @arv: Entry argument.
  * @env: array of string.
  * Return: Always 0.
  */
-int main(int ac, __attribute__((unused))char **av, char **env)
+int main(int arg, __attribute__((unused))char **argv, char **env)
 {
-	char *buff = NULL, *path, **tokenize;
+	char *input = NULL, *path, **tokenize;
 	int status = 0, number = 0;
 	pid_t pid;
-	(void)ac;
+	(void)arg;
 
 	while (1)
 	{
-		buff = readline();
+		input = read_line();
 		tokenize = NULL;
-		tokenize = custom_tokenizer(buff);
+		tokenize = custom_tokenizer(input);
 		if (!tokenize)
 			continue;
-		cmd(tokenize, env, &buff, number);
+		cmd(tokenize, env, &input, number);
 		pid = fork();
 		if (pid == -1)
 		{
 			perror("Error:");
-			__free(tokenize, buff);
+			free_var(tokenize, input);
 			return (1);
 		}
 		if (pid == 0)
 		{
-			path = pathch(tokenize[0], env);
+			path = tokenize_path(tokenize[0], env);
 			if (execve(path, tokenize, NULL) == -1)
 			{
 				perror(tokenize[0]);
-				_free(tokenize, buff);
+				free_resources(tokenize, input);
 				exit(0);
 			}
 		}
 		else
 		{
-			_free(tokenize, buff);
+			free_resources(tokenize, input);
 			wait(&status);
-			number = __exit(status);
+			number = exit_status(status);
 		}
 	}
-	__free(tokenize, buff);
+	free_var(tokenize, input);
 	return (0);
-}
-/**
- * _free - free variable for main.
- * @tokenize: the array of strings from main.
- * @buff: buffer input from main function.
- */
-void _free(char **tokenize, char *buff)
-{
-	int i;
-
-	for (i = 0; tokenize[i]; i++)
-		free(tokenize[i]);
-	nfree(tokenize);
-	sfree(buff);
-}
-/**
- * __free - free variable for main.
- * @tokenize: the array of strings from main.
- * @buff: buffer input from main function.
- */
-void __free(char **tokenize, char *buff)
-{
-	nfree(tokenize);
-	sfree(buff);
-}
-/**
- * __exit - return exit frommm child process
- * @status: exit value.
- * Return: exit value.
- */
-int __exit(int status)
-{
-	int number;
-
-	if (WIFEXITED(status))
-		number = WEXITSTATUS(status);
-	return (number);
 }
