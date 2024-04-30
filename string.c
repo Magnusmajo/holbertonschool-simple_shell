@@ -1,25 +1,23 @@
 #include "shell.h"
+#include "shell.h"
 /**
- * _strcat - concentrates two string.
- *@dest: string  value.
- *@src: string value.
- * Return: dest value.
+ * concatenate_strings - Concatenates two strings.
+ * @destination: The destination string.
+ * @source: The source string.
+ * Return: Pointer to the concatenated string.
  */
-char *_strcat(char *dest, char *src)
+char *concatenate_strings(char *destination, char *source)
 {
-	int a, b;
+        int dest_length = 0;
+        int src_index;
 
-	for (a = 0; dest[a] != '\0'; a++)
-		;
-	b = 0;
-	while (src[b] != '\0')
-	{
-		dest[a] = src[b];
-		b++;
-		a++;
-	}
-	dest[a] = '\0';
-	return (dest);
+        for (src_index = 0; source[src_index] != '\0'; src_index++)
+        {
+                destination[dest_length] = source[src_index];
+                dest_length++;
+        }
+        destination[dest_length] = '\0';
+       return destination;
 }
 /**
  * _strcmp - function that compares string.
