@@ -1,0 +1,12 @@
+# Vim and editor swap files
+*.swp
+*.swo
+*~
+
+# Compiled output
+hsh
+*.o
+*.out
+
+# Local and operating-system artifacts
+.DS_Store
